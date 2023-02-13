@@ -1,0 +1,26 @@
+{
+  "name": "vite-template-solid",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@unocss/preset-mini": "^0.49.4",
+    "@unocss/vite": "^0.49.4",
+    "@widcardw/eslint-config": "0.3.0-beta.2",
+    "eslint": "^8.34.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1",
+    "vite-plugin-solid": "^2.5.0"
+  },
+  "dependencies": {
+    "solid-js": "^1.6.10"
+  },
+  "eslintConfig": {
+    "extends": "@widcardw"
+  }
+}
