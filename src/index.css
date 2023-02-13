@@ -1,0 +1,14 @@
+.page {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: rgba(156, 163, 175, 0.3);
+  cursor: pointer;
+}
+
+.page:hover {
+  background-color: rgba(156, 163, 175, 0.1);
+}
+
+html {
+  background-color: white;
+}

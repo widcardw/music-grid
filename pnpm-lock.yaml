@@ -1,9 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@unocss/preset-mini': ^0.49.4
+  '@types/dom-to-image': ^2.6.4
+  '@unocss/preset-uno': ^0.49.4
   '@unocss/vite': ^0.49.4
   '@widcardw/eslint-config': 0.3.0-beta.2
+  dom-to-image: ^2.6.0
   eslint: ^8.34.0
   solid-js: ^1.6.10
   typescript: ^4.9.5
@@ -14,9 +16,11 @@ dependencies:
   solid-js: 1.6.10
 
 devDependencies:
-  '@unocss/preset-mini': 0.49.4
+  '@types/dom-to-image': 2.6.4
+  '@unocss/preset-uno': 0.49.4
   '@unocss/vite': 0.49.4_vite@4.1.1
   '@widcardw/eslint-config': 0.3.0-beta.2_7kw3g6rralp5ps6mg3uyzz6azm
+  dom-to-image: 2.6.0
   eslint: 8.34.0
   typescript: 4.9.5
   vite: 4.1.1
@@ -711,6 +715,10 @@ packages:
       picomatch: 2.3.1
     dev: true
 
+  /@types/dom-to-image/2.6.4:
+    resolution: {integrity: sha512-UddUdGF1qulrSDulkz3K2Ypq527MR6ixlgAzqLbxSiQ0icx0XDlIV+h4+edmjq/1dqn0KgN0xGSe1kI9t+vGuw==}
+    dev: true
+
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
@@ -894,6 +902,21 @@ packages:
     resolution: {integrity: sha512-GsVKBRi2BbliEic7SfdY2AG03T+wEOd3yZOY+NtwEJ9Z/hwb1zRQHiizDuyth0E3FCHVfZkk9C0/WXy8Z1Qj3g==}
     dependencies:
       '@unocss/core': 0.49.4
+    dev: true
+
+  /@unocss/preset-uno/0.49.4:
+    resolution: {integrity: sha512-/z94B8YYdIEiK4Bpyx7eJcu4rlNsPLO4+Plc/Gxxm4Lxz24gIv27EqtuKVrKhFabqJK27uyjpdtkx/ACbePz/A==}
+    dependencies:
+      '@unocss/core': 0.49.4
+      '@unocss/preset-mini': 0.49.4
+      '@unocss/preset-wind': 0.49.4
+    dev: true
+
+  /@unocss/preset-wind/0.49.4:
+    resolution: {integrity: sha512-Ycp5iBT7XZy3635fqPU1UpjsPvTbH9am94RV1H3g3txpar1wcUsEE9Lihb0cjWVssoIDQUft5S++XX+rIRIZuA==}
+    dependencies:
+      '@unocss/core': 0.49.4
+      '@unocss/preset-mini': 0.49.4
     dev: true
 
   /@unocss/scope/0.49.4:
@@ -1362,6 +1385,10 @@ packages:
       domelementtype: 2.3.0
       domhandler: 5.0.3
       entities: 4.4.0
+    dev: true
+
+  /dom-to-image/2.6.0:
+    resolution: {integrity: sha512-Dt0QdaHmLpjURjU7Tnu3AgYSF2LuOmksSGsUcE6ItvJoCWTBEmiMXcqBdNSAm9+QbbwD7JMoVsuuKX6ZVQv1qA==}
     dev: true
 
   /domelementtype/2.3.0:
