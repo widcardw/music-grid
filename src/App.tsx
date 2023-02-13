@@ -56,20 +56,23 @@ const App: Component = () => {
   const [dom, setDom] = createSignal<HTMLDivElement>()
   const [img, setImg] = createSignal('')
   const [showDownload, setDownload] = createSignal(false)
+  const [ma, setMa] = createSignal(true)
 
   function generateCanvas() {
     // html2canvas(dom()).then((canvas) => {
     //   setImg(canvas.toDataURL('image/jpeg', 0.8))
     //   setDownload(true)
     // })
+    setMa(false)
     dom2img.toJpeg(dom(), { quality: 0.8 }).then((data) => {
       setImg(data)
       setDownload(true)
+      setMa(true)
     })
   }
   return (
     <>
-      <div ref={setDom} class="w-1106px bg-white/100 p-8">
+      <div ref={setDom} class="w-1106px bg-white/100 p-8" classList={{ 'mx-a': ma() }}>
         <input class="text-center font-700 text-2rem w-full border-none p-4" value="音乐生涯个人喜好表（可修改标题）" />
         <GridShow
           data={songs}
