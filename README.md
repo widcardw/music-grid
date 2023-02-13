@@ -1,34 +1,17 @@
-## Usage
+# 音乐生涯个人喜好生成器
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+> 受 [anime-grid](https://github.com/itorr/anime-grid) 启发，临时写的一个小玩具
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+## 在线体验
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+https://music-grid.widcard.win
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+## 致谢
 
-## Available Scripts
+- [Anime-grid](https://github.com/itorr/anime-grid) by itorr
+- [NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi) 提供的 API
+- Vercel 和 Netlify 提供的免费部署服务
 
-In the project directory, you can run:
+禁止商业、盈利相关利用
 
-### `npm dev` or `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
