@@ -12,6 +12,8 @@ async function searchSong(props: {
   page: number
 }): Promise<ResponseType> {
   const { keyword, page } = props
+  if (keyword.trim() === '')
+    return { code: 400, result: null }
   const params = {
     keywords: keyword,
     limit: LIMIT,
@@ -19,7 +21,8 @@ async function searchSong(props: {
   }
   const url = `${API}cloudsearch?${objectToParams(params)}`
   const response = await fetch(url)
-  // console.log(await response.json())
+  // eslint-disable-next-line no-console
+  console.log('sent request', keyword)
   return response.json()
 }
 

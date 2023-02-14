@@ -4,7 +4,7 @@ import type { ResponseType, SongType } from '../../utils/types'
 import { GridView } from '../GridView'
 
 const SuspenseGrid: Component<{
-  data: Resource< ResponseType>
+  data: Resource<ResponseType>
   onSelect: (song: SongType) => any
 }> = (props) => {
   return (
