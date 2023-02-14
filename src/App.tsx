@@ -102,6 +102,11 @@ const App: Component = () => {
             setDlg(false)
             setStorage(songs)
           }}
+          onClear={() => {
+            setSongs(cur(), { label: songs[cur()].label, index: cur(), type: 'label' })
+            setDlg(false)
+            setStorage(songs)
+          }}
         />
       </Show>
     </>

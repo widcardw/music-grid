@@ -22,7 +22,7 @@ async function searchSong(props: {
   const url = `${API}cloudsearch?${objectToParams(params)}`
   const response = await fetch(url)
   // eslint-disable-next-line no-console
-  console.log('sent request', keyword)
+  console.log('sent request', keyword, page)
   return response.json()
 }
 

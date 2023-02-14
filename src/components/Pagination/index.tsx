@@ -12,14 +12,14 @@ const Pagination: Component<{
     <div class="text-center space-x-2">
       <button
         class="page"
-        disabled={state().keyword.trim() === '' || data.loading}
+        disabled={state().keyword.trim() === '' || data.loading || state().page < 1}
         onClick={() => onChange(-1)}
       >&lt;
       </button>
       <button class="page" onClick={onClose}>x</button>
       <button
         class="page"
-        disabled={state().keyword.trim() === '' || data.loading}
+        disabled={state().keyword.trim() === '' || data.loading || state().page > 99}
         onClick={() => onChange(1)}
       >&gt;
       </button>

@@ -21,14 +21,15 @@ const SearchDialog: Component<{
   onSelect: (song: SongType) => any
   onClose?: () => any
   onFill: (name: string) => any
-}> = ({ onSelect, onClose, onFill }) => {
-  const [state, setState] = createSignal<SearchState>({ keyword: '', page: 0 })
+  onClear: () => any
+}> = ({ onSelect, onClose, onFill, onClear }) => {
+  const [state, setState] = createSignal<SearchState>({ keyword: '', page: 0 }, {
+    equals: (prev, next) => prev.keyword.trim() === next.keyword.trim() && prev.page === next.page,
+  })
   const [data] = createResource(state, searchSong)
   const [el, setEl] = createSignal<HTMLInputElement>()
   function onInputEnter(e: FormSubmitEvent) {
     e.preventDefault()
-    if (el().value.trim() === state().keyword)
-      return
     setState({
       keyword: el().value,
       page: 0,
@@ -36,7 +37,7 @@ const SearchDialog: Component<{
   }
   function onPageChange(v: number) {
     const newPage = state().page + v
-    if (newPage < 0 || newPage > 300 || state().keyword.trim() === '')
+    if (newPage < 0 || newPage > 100 || state().keyword.trim() === '')
       return
     setState(p => ({ keyword: p.keyword, page: newPage }))
   }
@@ -63,8 +64,9 @@ const SearchDialog: Component<{
           onChange={i => onPageChange(i)}
           onClose={onClose}
         />
-        <div class="text-center">
+        <div class="text-center space-x-2">
           <button class="page" onClick={() => onFill(el().value)}>没有找到想要的？直接填入吧</button>
+          <button class="page" onClick={onClear}>清除这个格子</button>
         </div>
       </div>
     </div>
