@@ -1,10 +1,9 @@
 import type { Component } from 'solid-js'
-import { Show } from 'solid-js'
 import type { SongType } from '../../utils/types'
 
 const SongView: Component<{
   song: SongType
-  onClick: (id: SongType) => any
+  onClick?: (id: SongType) => any
 }> = (props) => {
   return (
     <div class="cursor-pointer" onClick={() => props.onClick?.({

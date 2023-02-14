@@ -1,6 +1,6 @@
 import type { Component } from 'solid-js'
 import { Match, Switch } from 'solid-js'
-import type { MayBeSong } from '../../utils/types'
+import type { MayBeSong, OnlyName, SongShownType } from '../../utils/types'
 import { SongView } from '../SongView'
 
 const SongShown: Component<{
@@ -15,13 +15,11 @@ const SongShown: Component<{
           <div class="w-200px h-200px"></div>
         </Match>
         <Match when={props.song.type === 'song'}>
-          {/* @ts-expect-error type error */}
-          <SongView song={props.song} />
+          <SongView song={props.song as SongShownType} />
         </Match>
         <Match when={props.song.type === 'onlyname'}>
           <div class="w-200px h-200px flex justify-center items-center">
-            {/* @ts-expect-error type error */}
-            {props.song.name}
+            {(props.song as OnlyName).name}
           </div>
         </Match>
       </Switch>

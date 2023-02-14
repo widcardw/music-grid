@@ -1,7 +1,6 @@
 import type { Component } from 'solid-js'
 import { Show, createSignal } from 'solid-js'
 import { createStore } from 'solid-js/store'
-// import html2canvas from 'html2canvas'
 import dom2img from 'dom-to-image'
 import { Footer } from './components/Footer'
 import { GridShow } from './components/GridShow'
@@ -59,10 +58,6 @@ const App: Component = () => {
   const [ma, setMa] = createSignal(true)
 
   function generateCanvas() {
-    // html2canvas(dom()).then((canvas) => {
-    //   setImg(canvas.toDataURL('image/jpeg', 0.8))
-    //   setDownload(true)
-    // })
     setMa(false)
     dom2img.toJpeg(dom(), { quality: 0.8 }).then((data) => {
       setImg(data)
