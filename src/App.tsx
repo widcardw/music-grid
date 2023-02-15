@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js'
-import { Show, createSignal } from 'solid-js'
+import { ErrorBoundary, Show, createSignal } from 'solid-js'
 import { createStore } from 'solid-js/store'
 import dom2img from 'dom-to-image'
 import { Footer } from './components/Footer'
@@ -45,6 +45,19 @@ function getStorage(): MayBeSong[] {
   return JSON.parse(songStr)
 }
 
+const ErrorFallback: Component<{
+  err: any
+  reset: () => void
+}> = ({ err, reset }) => {
+  return (
+    <div class="w-1106px p-8 mx-a">
+      <h1>出错啦</h1>
+      <p>{String(err)}</p>
+      <button class="page" onClick={reset}>重置</button>
+    </div>
+  )
+}
+
 const App: Component = () => {
   const [dlg, setDlg] = createSignal(false)
   let cached = getStorage()
@@ -59,14 +72,19 @@ const App: Component = () => {
 
   function generateCanvas() {
     setMa(false)
-    dom2img.toJpeg(dom(), { quality: 0.8 }).then((data) => {
-      setImg(data)
-      setDownload(true)
-      setMa(true)
-    })
+    dom2img.toJpeg(dom(), { quality: 0.8 })
+      .then((data) => {
+        setImg(data)
+        setDownload(true)
+        setMa(true)
+      })
+      .catch((e) => {
+        // eslint-disable-next-line no-console
+        console.log(e)
+      })
   }
   return (
-    <>
+    <ErrorBoundary fallback={(err, reset) => <ErrorFallback err={err} reset={reset} />}>
       <div ref={setDom} class="w-1106px bg-white/100 p-8" classList={{ 'mx-a': ma() }}>
         <input class="text-center font-700 text-2rem w-full border-none p-4" value="音乐生涯个人喜好表（可修改标题）" />
         <GridShow
@@ -78,7 +96,7 @@ const App: Component = () => {
         />
         <Footer />
       </div>
-      <button class="w-full page" onClick={generateCanvas}>生成</button>
+      <button class="w-full page" disabled={setDownload()} onClick={generateCanvas}>生成</button>
       <Show when={showDownload()}>
         <Download data={img()} onClose={() => setDownload(false)} />
       </Show>
@@ -104,7 +122,7 @@ const App: Component = () => {
           }}
         />
       </Show>
-    </>
+    </ErrorBoundary>
   )
 }
 
