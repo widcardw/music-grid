@@ -28,8 +28,8 @@ const TYPES = [
   '最热血的',
   '最怪的',
   '最冷门的',
-  '最讨厌的',
-  '最令人失望的',
+  '最不希望它火的',
+  '最过誉的',
 ]
 
 function setStorage(obj: MayBeSong[]) {
@@ -43,6 +43,11 @@ function getStorage(): MayBeSong[] {
     return
   const songStr = window.localStorage.getItem('songs') || '[]'
   return JSON.parse(songStr)
+}
+
+function sameArray<T>(s1: Array<T>, s2: Array<T>): boolean {
+  const s = new Set([...s1, ...s2])
+  return s.size === s1.length && s.size === s2.length
 }
 
 const ErrorFallback: Component<{
@@ -61,7 +66,7 @@ const ErrorFallback: Component<{
 const App: Component = () => {
   const [dlg, setDlg] = createSignal(false)
   let cached = getStorage()
-  if (cached.length === 0)
+  if (cached.length === 0 || !sameArray(TYPES, cached.map(i => i.label)))
     cached = TYPES.map((i, j) => ({ label: i, type: 'label', index: j }))
   const [songs, setSongs] = createStore<MayBeSong[]>(cached)
   const [cur, setCur] = createSignal(-1)
@@ -85,18 +90,25 @@ const App: Component = () => {
   }
   return (
     <ErrorBoundary fallback={(err, reset) => <ErrorFallback err={err} reset={reset} />}>
-      <div ref={setDom} class="w-1106px bg-white/100 p-8" classList={{ 'mx-a': ma() }}>
-        <input class="text-center font-700 text-2rem w-full border-none p-4" value="音乐生涯个人喜好表（可修改标题）" />
-        <GridShow
-          data={songs}
-          onSelect={(id) => {
-            setCur(id)
-            setDlg(true)
-          }}
-        />
-        <Footer />
+      <div class="w-1170px" classList={{ 'mx-a': ma() }}>
+        <div ref={setDom} class="bg-white/100 p-8 pb-4">
+          <input class="text-center font-700 text-2rem w-full border-none p-4" value="音乐生涯个人喜好表（可修改标题）" />
+          <GridShow
+            data={songs}
+            onSelect={(id) => {
+              setCur(id)
+              setDlg(true)
+            }}
+          />
+          <Footer />
+        </div>
+        <button class="page mt-2 w-full" disabled={!ma()} onClick={generateCanvas}>
+          {ma() ? '点击生成' : <>生成中 请稍等 网页突然靠左是<span class="line-through">特性</span></>}
+        </button>
+        <div class="text-center p-4">
+          <a class="link" href="https://github.com/widcardw/music-grid">GitHub</a>
+        </div>
       </div>
-      <button class="w-full page" disabled={setDownload()} onClick={generateCanvas}>生成</button>
       <Show when={showDownload()}>
         <Download data={img()} onClose={() => setDownload(false)} />
       </Show>

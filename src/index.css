@@ -1,14 +1,33 @@
 .page {
   padding: 0.5rem;
   border-radius: 0.25rem;
-  background-color: rgba(156, 163, 175, 0.3);
+  background-color: whitesmoke;
   cursor: pointer;
+  border: 2px solid black;
 }
 
 .page:hover {
-  background-color: rgba(156, 163, 175, 0.1);
+  background-color: white;
 }
 
 html {
-  background-color: white;
+  background-color: lightgrey;
+}
+
+input {
+  box-sizing: border-box;
+}
+
+#root {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.link {
+  text-decoration: none;
+  color: darkgray;
+}
+
+.link:hover {
+  color: gray;
 }
