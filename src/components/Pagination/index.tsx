@@ -7,20 +7,20 @@ const Pagination: Component<{
   onClose: () => void
   data: Resource<ResponseType>
   state: Accessor<SearchState>
-}> = ({ onChange, onClose, data, state }) => {
+}> = (props) => {
   return (
     <div class="text-center space-x-2">
       <button
         class="page"
-        disabled={state().keyword.trim() === '' || data.loading || state().page < 1}
-        onClick={() => onChange(-1)}
+        disabled={props.state().keyword.trim() === '' || props.data.loading || props.state().page < 1}
+        onClick={() => props.onChange(-1)}
       >&lt;
       </button>
-      <button class="page" onClick={onClose}>x</button>
+      <button class="page" onClick={() => props.onClose()}>x</button>
       <button
         class="page"
-        disabled={state().keyword.trim() === '' || data.loading || state().page > 99}
-        onClick={() => onChange(1)}
+        disabled={props.state().keyword.trim() === '' || props.data.loading || props.state().page > 99}
+        onClick={() => props.onChange(1)}
       >&gt;
       </button>
     </div>

@@ -53,6 +53,7 @@ function sameArray<T>(s1: Array<T>, s2: Array<T>): boolean {
 const ErrorFallback: Component<{
   err: any
   reset: () => void
+// eslint-disable-next-line solid/no-destructure
 }> = ({ err, reset }) => {
   return (
     <div class="w-1106px p-8 mx-a">
@@ -114,6 +115,7 @@ const App: Component = () => {
       </Show>
       <Show when={dlg()}>
         <SearchDialog
+          // eslint-disable-next-line solid/reactivity
           onSelect={(song) => {
             setSongs(cur(), { ...song, label: songs[cur()].label, index: cur(), type: 'song' })
             setDlg(false)
@@ -122,11 +124,13 @@ const App: Component = () => {
           onClose={() => {
             setDlg(false)
           }}
+          // eslint-disable-next-line solid/reactivity
           onFill={(name) => {
             setSongs(cur(), { name, label: songs[cur()].label, index: cur(), type: 'onlyname' })
             setDlg(false)
             setStorage(songs)
           }}
+          // eslint-disable-next-line solid/reactivity
           onClear={() => {
             setSongs(cur(), { label: songs[cur()].label, index: cur(), type: 'label' })
             setDlg(false)

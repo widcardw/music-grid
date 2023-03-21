@@ -14,7 +14,7 @@ const SongView: Component<{
       id: props.song.id,
     })}
     >
-      <img src={props.song.al.picUrl} style="width: 200px; height: 200px; object-fit: cover;" />
+      <img src={props.song.al.picUrl} style={{ 'width': '200px', 'height': '200px', 'object-fit': 'cover' }} />
       <div class="text-sm">{props.song.name}</div>
       <div class="text-sm text-gray-400">{props.song.ar.map(i => i.name).join('/')}</div>
       <div class="text-sm text-gray-700">{props.song.al.name}</div>

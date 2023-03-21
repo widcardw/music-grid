@@ -12,7 +12,7 @@ const SongShown: Component<{
       <strong>{props.song.label}</strong>
       <Switch>
         <Match when={props.song.type === 'label'}>
-          <div class="w-200px h-200px"></div>
+          <div class="w-200px h-200px" />
         </Match>
         <Match when={props.song.type === 'song'}>
           <SongView song={props.song as SongShownType} />
